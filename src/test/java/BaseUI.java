@@ -1,12 +1,25 @@
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
-
 public class BaseUI {
     WebDriver driver;
+    WebDriverWait wait;
+    //declare objects from main class to be able to use it on test class
+    MainPage mainPage;
+    SearchPrettyWomen searchPrettyWomen;
+    GiftsPage giftsPage;
+    TourToUkraine tourToUkraine;
+    FindPeople findPeople;
+    PhotoPage photoPage;
+    BlogPage blogPage;
+
     String mainUrl = "https://romanceabroad.com/";
+
+    /*used for RadioButton class
+    String CURRENTurl = "https://www.computerhope.com/";*/
 
 
     @BeforeMethod
@@ -15,16 +28,31 @@ public class BaseUI {
 
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+        wait = new WebDriverWait(driver, 20);
+        mainPage = new MainPage(driver, wait);
+        giftsPage = new GiftsPage(driver, wait);
+        searchPrettyWomen = new SearchPrettyWomen(driver, wait);
+        tourToUkraine = new TourToUkraine(driver, wait);
+        findPeople = new FindPeople(driver, wait);
+        photoPage = new PhotoPage(driver, wait);
+        blogPage = new BlogPage(driver, wait);
+
         driver.get(mainUrl);
+
+        /*used for RadioButton class
+        driver.get(CURRENTurl);*/
     }
 
 
     @AfterMethod
     public void afterActions() {
 
-       // driver.quit();
+        driver.quit();
     }
 
+
 }
+
+
 
     

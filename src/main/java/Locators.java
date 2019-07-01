@@ -7,22 +7,23 @@ public class Locators {
     public static final By BOOK_NOW = By.xpath("//a[contains(text(),'BOOK NOW')]");
 
     //Registration
-    public static final By JOIN_FOR_FREE_REGISTRATION= By.cssSelector("#show-registration-block");
-    public static final By EMAIL_TEXT_FIELD =By.cssSelector("#email");
+    public static final By JOIN_FOR_FREE_REGISTRATION = By.cssSelector("#show-registration-block");
+    public static final By EMAIL_TEXT_FIELD = By.cssSelector("#email");
     public static final By PASSWORD_TEXT_FIELD = By.cssSelector("#password");
     public static final By NEXT_BUTTON = By.xpath("//div[@class='col-xs-12']//button[@class='btn btn-primary btn-block btn-lg'][contains(text(),'Next')]");
     public static final By USERNAME_TEXT_FIELD = By.xpath("//input[@id='nickname']");
-    public static final By BIRTH_DATE_DAY = By.cssSelector("#daySelect");
+    public static final By DAY = By.cssSelector("#daySelect");
     public static final By DAY10 = By.xpath("//ul[@class='dropdown-menu show']//a[contains(text(),'10')]");
+    public static final By DAY_OPTION = By.xpath("//div[@id='daySelect']//a[@class='btn btn-default dropdown-toggle btn-lg btn-block']");
+    public static final By SELECT_DAY = By.xpath("//ul[@class='dropdown-menu show']//a[@data-value='5']");
     public static final By MONTH_OPTION = By.cssSelector("div#monthSelect");
+    public static final By SELECT_MONTH = By.xpath("//ul[@class='dropdown-menu show']//a[@data-value='11']");
     public static final By YEAR_OPTION = By.cssSelector("div#yearSelect");
+    public static final By SELECT_YEAR = By.xpath("//ul[@class='dropdown-menu show']//a[@data-value='1987']");
     public static final By MAY = By.xpath("//a[contains(text(),'May')]");
     public static final By YEAR1970 = By.xpath("//a[contains(text(),'1970')]");
-    public static final By LOCATION_TEXT_FIELD = By.xpath("//input[@id='country_text_352854']");
     public static final By PHONE_TEXT_FIELD = By.xpath("//input[@name='data[phone]']");
     public static final By I_CONFIRM_CHECKBOX = By.cssSelector("input#confirmation");
-
-
 
 
     //How we work page
@@ -37,17 +38,17 @@ public class Locators {
     public static final By SELECTED_GIRL = By.xpath("//img[@alt='Marina_mari_']");
 
 
-
     //Pretty women
     public static final By PRETTY_WOMEN_LINK = By.xpath("//a[@href='https://romanceabroad.com/users/search']");
-    public static final By LIST_VIEW = By.xpath("//i[@class='fa fa-list']");
+    public static final By LIST_VIEW = By.xpath("//div[@class='form-inline']//select");
     public static final By PEOPLE_FOUND = By.xpath("//div[@class='lh30']");
 
 
     //Gifts
     public static final By GIFTS_LINK = By.xpath("//a[@href='https://romanceabroad.com/store/category-sweets']");
-    public static final By BEST_SALLERS = By.xpath("//div[contains(@class,'contrasting-block row g-bestsellers-gallery')]");
-    public static final By FLOWER_BASKET_OPTION = By.xpath("//div[contains(@class,'col-xs-12 col-sm-12 col-md-3 col-lg-3')]");
+    public static final By BEST_SALLERS = By.xpath("//a[contains(@href, 'https://romanceabroad.com/store/sweets/12-flower_basket')][@class]");
+    public static final By GIFTS_LIST = By.xpath("//div[contains(@class,'text-overflow')]");
+    public static final By FLOWER_BASKET_OPTION = By.xpath("//div[@class='panel panel-default pg-panel-default']");
     public static final By FLOWER_BASKET_DESCRIPTION = By.xpath("//h1[@class='title']");
     public static final By OPTION_TO_PAY = By.xpath("//div[@class='add-cart mb10']");
 
@@ -65,8 +66,18 @@ public class Locators {
     public static final By BLOG_LINK = By.xpath("//a[@href='https://romanceabroad.com/content/view/blog']");
 
 
+    //Radio Button
+    public static final By TEXT_FIELD_RADIO_BUTTON = By.xpath("//input[@class='sbar']");
+    public static final By CLICK_SEARCH_BUTTON = By.xpath("//header[@class='cf']//button[contains(text(),'Search')]");
+    public static final By RADIO_BUTTON3 = By.xpath("//input[@value='V3']");
+    public static final By RADIO_BUTTON2 = By.xpath("//input[@value='V2']");
+    public static final By RADIO_BUTTON4 = By.xpath("//input[@value='V4']");
+    public static final By RADIO_BUTTON5 = By.xpath("//input[@value='V5']");
 
 
+    //iFrame youtube on HomePage
+    public static final By IFRAME_YOUTUBE = By.xpath("//div[@class='video']//iframe");
+    public static final By OPEN_YOUTUBE_VIDEO = By.xpath("//button[@class='ytp-large-play-button ytp-button']");
 
 
 }
