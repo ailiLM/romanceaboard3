@@ -4,18 +4,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 public class MainPage extends BaseActions {
 
     String currentUrlHome;
-    String expectedURLHome = "https://romanceabroad.com/#";
     String currentUrlGifts;
-    String expectedUrlGifts = "https://romanceabroad.com/store/category-sweets";
     String currentUrlHowWeWork;
-    String expectedUrlHowWeWork = "https://romanceabroad.com/content/view/how-it-works";
     String currentUrlPhoto;
-    String expetctedUrlPhoto = "https://romanceabroad.com/media/index";
     String currentUrlPrettyWomen;
-    String expectedUrlprettyWomen = "https://romanceabroad.com/users/search";
 
 
     public MainPage(WebDriver driver, WebDriverWait wait) {
@@ -27,47 +25,56 @@ public class MainPage extends BaseActions {
         getClick(Locators.JOIN_FOR_FREE_REGISTRATION);
     }
 
-    public void firstPartOfRegistration() {
-        driver.findElement(Locators.EMAIL_TEXT_FIELD).sendKeys(Data.email);
-        driver.findElement(Locators.PASSWORD_TEXT_FIELD).sendKeys(Data.password);
+    public void firstPartOfRegistration(String email, String password) {
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        driver.findElement(Locators.EMAIL_TEXT_FIELD).sendKeys(email);
+        driver.findElement(Locators.PASSWORD_TEXT_FIELD).sendKeys(password);
         driver.findElement(Locators.NEXT_BUTTON).click();
     }
 
-    public void secondPartOfRegistration() {
-        driver.findElement(Locators.USERNAME_TEXT_FIELD).sendKeys(generateNewNumber(Data.username, 10));
-         /*WebElement day = driver.findElement(Locators.DAY_OPTION);
-        day.click();
-        getClickByMouse(day);
-        getClick(Locators.DAY10);*/
-        driver.findElement(Locators.DAY).click();
-        driver.findElement(Locators.SELECT_DAY).click();
-        /*WebElement month = driver.findElement(Locators.MONTH_OPTION);
-        month.click();
-        getClickByMouse(month);
-        getClick(Locators.MAY);*/
-        driver.findElement(Locators.MONTH_OPTION).click();
-        driver.findElement(Locators.SELECT_MONTH).click();
+    public void secondPartOfRegistration(String username, String phone, String day, String month,
+                                         String year, String city, String location) {
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        driver.findElement(Locators.USERNAME_TEXT_FIELD).sendKeys(username);
+        /*driver.findElement(Locators.LIST_DAY).click();
+        clickValueOflist(Locators.LIST_VALUE_DAY, day);
+        driver.findElement(Locators.LIST_MONTH).click();
+        clickValueOflist(Locators.LIST_VALUE_MONTH, month);
+        driver.findElement(Locators.LIST_YEAR).click();
+        clickValueOflist(Locators.LIST_VALUE_YEAR, year);
+*/
+        driver.findElement(Locators.PHONE_TEXT_FIELD).sendKeys(phone);
 
-        /*WebElement year = driver.findElement(Locators.YEAR_OPTION);
-        year.click();
-        getClickByMouse(year);
-        getClick(Locators.YEAR1970);*/
-        driver.findElement(Locators.YEAR_OPTION).click();
-        driver.findElement(Locators.SELECT_YEAR).click();
+        driver.findElement(Locators.AUTOFILLING_FORM).sendKeys(city);
+        clickValueOflist(Locators.LIST_VALUE_LOCATION,location);
 
-        driver.findElement(Locators.PHONE_TEXT_FIELD).sendKeys(Data.phone);
 
-        WebElement checkBoxConfirmation = driver.findElement(Locators.I_CONFIRM_CHECKBOX);
-        boolean checkboxStatus = checkBoxConfirmation.isSelected();
-        System.out.println(checkboxStatus + "is selected!!!");
-        getClick(Locators.I_CONFIRM_CHECKBOX);
+        /*boolean checkboxStatus = checkBoxConfirmation.isSelected();
+        System.out.println(checkboxStatus + "is selected!!!");*/
+        //or using Assert class
+
     }
+
+
+    public void clickValueOflist(By locator, String text) {
+        List<WebElement> elements = driver.findElements(locator);
+        for (int i = 0; i < elements.size(); i++) {
+            WebElement elementOfList = elements.get(i);
+            String value = elementOfList.getText();
+            if (value.contains(text)) {
+                elementOfList.click();
+            }
+            elements = driver.findElements(locator);
+        }
+
+    }
+
 
     public void verifyLinkHomeDisplays() {
         getNavigateToLinkPage(Locators.LINK_HOME);
         currentUrlHome = driver.getCurrentUrl();
-        Assert.assertEquals(currentUrlHome, expectedURLHome);
-        System.out.println(expectedURLHome);
+        Assert.assertEquals(currentUrlHome, Data.expectedURLHome);
+        System.out.println(Data.expectedURLHome);
     }
 
 
@@ -103,7 +110,7 @@ public class MainPage extends BaseActions {
     public void verifyGiftLinkDisplays() {
         getNavigateToLinkPage(Locators.GIFTS_LINK);
         currentUrlGifts = driver.getCurrentUrl();
-        Assert.assertEquals(currentUrlGifts, expectedUrlGifts);
+        Assert.assertEquals(currentUrlGifts, Data.expectedUrlGifts);
     }
     /*public void navigateToMainPage(){
         driver.navigate().to(mainUrl);
@@ -113,7 +120,7 @@ public class MainPage extends BaseActions {
     public void verifyHowWeWorkLinkDisplays() {
         getNavigateToLinkPage(Locators.HOW_WE_WORK);
         currentUrlHowWeWork = driver.getCurrentUrl();
-        Assert.assertEquals(currentUrlHowWeWork, expectedUrlHowWeWork);
+        Assert.assertEquals(currentUrlHowWeWork, Data.expectedUrlHowWeWork);
     }
 
     public void navigateToHowWeWork() {
@@ -123,16 +130,34 @@ public class MainPage extends BaseActions {
     public void verifyPhotoLinkDisplays() {
         driver.findElement(Locators.PHOTO_LINK).click();
         currentUrlPhoto = driver.getCurrentUrl();
-        Assert.assertEquals(currentUrlPhoto, expetctedUrlPhoto);
+        Assert.assertEquals(currentUrlPhoto, Data.expetctedUrlPhoto);
     }
 
     public void verifyPrettyWomenLinkDisplays() {
         getNavigateToLinkPage(Locators.PRETTY_WOMEN_LINK);
         currentUrlPrettyWomen = driver.getCurrentUrl();
-        Assert.assertEquals(currentUrlPrettyWomen, expectedUrlprettyWomen);
+        Assert.assertEquals(currentUrlPrettyWomen, Data.expectedUrlprettyWomen);
+    }
+
+    public void clickTabBlog() {
+        driver.findElement(Locators.HOW_WE_WORK).click();
+    }
+
+    public List<WebElement> collectAllLinksOfArticles() {
+        List<WebElement> linksOfArticles = driver.findElements(Locators.LINKS_OF_ARTICLES);
+        return linksOfArticles;
+    }
+
+    public String collectAllTitles() {
+        String titles = driver.findElement(Locators.H1_TITLE).getText();
+        return titles;
     }
 
 }
+
+
+
+
 
 
 

@@ -3,6 +3,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.asserts.SoftAssert;
 
 public class BaseUI {
     WebDriver driver;
@@ -15,8 +16,9 @@ public class BaseUI {
     FindPeople findPeople;
     PhotoPage photoPage;
     BlogPage blogPage;
+    BlogsOnBlogPage blogsOnBlogPage;
+    SoftAssert softAssert = new SoftAssert();
 
-    String mainUrl = "https://romanceabroad.com/";
 
     /*used for RadioButton class
     String CURRENTurl = "https://www.computerhope.com/";*/
@@ -36,8 +38,9 @@ public class BaseUI {
         findPeople = new FindPeople(driver, wait);
         photoPage = new PhotoPage(driver, wait);
         blogPage = new BlogPage(driver, wait);
+        blogsOnBlogPage = new BlogsOnBlogPage(driver, wait);
 
-        driver.get(mainUrl);
+        driver.get(Data.mainUrl);
 
         /*used for RadioButton class
         driver.get(CURRENTurl);*/
@@ -47,7 +50,7 @@ public class BaseUI {
     @AfterMethod
     public void afterActions() {
 
-        driver.quit();
+        //driver.quit();
     }
 
 

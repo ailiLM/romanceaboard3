@@ -18,7 +18,6 @@ public class FindPeople extends BaseActions {
         getDropdownlistByIndex(Locators.MIN_AGE_DROPDOWN_FROM_HOW_WE_WORK_PAGE, 2);
         getDropdownlistByIndex(Locators.MAX_AGE_DROPDOWN_FROM_HOW_WE_WORK_PAGE, 32);
         getClick(Locators.AGE_SEARCH_FROM_HOW_WE_WORK_PAGE);
-
     }
 
     public void ageTableDisplays() {

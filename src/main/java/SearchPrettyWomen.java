@@ -11,6 +11,7 @@ public class SearchPrettyWomen extends BaseActions {
 
 
     public void selectViewsFromListViewDropdownList() {
+
         getDropdownByVisibleText(Locators.LIST_VIEW, "Views");
     }
 

@@ -1,6 +1,8 @@
 import org.openqa.selenium.By;
 
 public class Locators {
+
+    public static final By H1_TITLE = By.xpath("//h1");
     //Home page
     public static final By LINK_HOME = By.xpath("//a[contains(text(),'HOME')]");
     public static final By DISCOUNT_ALERT_ORANGE = By.xpath("//div[@class='discountalert']");
@@ -12,17 +14,19 @@ public class Locators {
     public static final By PASSWORD_TEXT_FIELD = By.cssSelector("#password");
     public static final By NEXT_BUTTON = By.xpath("//div[@class='col-xs-12']//button[@class='btn btn-primary btn-block btn-lg'][contains(text(),'Next')]");
     public static final By USERNAME_TEXT_FIELD = By.xpath("//input[@id='nickname']");
-    public static final By DAY = By.cssSelector("#daySelect");
+    public static final By LIST_DAY = By.cssSelector("#daySelect");
     public static final By DAY10 = By.xpath("//ul[@class='dropdown-menu show']//a[contains(text(),'10')]");
-    public static final By DAY_OPTION = By.xpath("//div[@id='daySelect']//a[@class='btn btn-default dropdown-toggle btn-lg btn-block']");
-    public static final By SELECT_DAY = By.xpath("//ul[@class='dropdown-menu show']//a[@data-value='5']");
-    public static final By MONTH_OPTION = By.cssSelector("div#monthSelect");
-    public static final By SELECT_MONTH = By.xpath("//ul[@class='dropdown-menu show']//a[@data-value='11']");
-    public static final By YEAR_OPTION = By.cssSelector("div#yearSelect");
-    public static final By SELECT_YEAR = By.xpath("//ul[@class='dropdown-menu show']//a[@data-value='1987']");
+    public static final By DAY_OPTION1 = By.xpath("//div[@id='daySelect']//a[@class='btn btn-default dropdown-toggle btn-lg btn-block']");
+    public static final By LIST_VALUE_DAY = By.xpath("//li[@data-handler='selectDay']");
+    public static final By LIST_MONTH = By.cssSelector("#monthSelect");
+    public static final By LIST_VALUE_MONTH = By.xpath("//li[@data-handler='selectMonth']");
+    public static final By LIST_YEAR = By.cssSelector("#yearSelect");
+    public static final By LIST_VALUE_YEAR = By.xpath("//li[@data-handler='selectYear']");
     public static final By MAY = By.xpath("//a[contains(text(),'May')]");
     public static final By YEAR1970 = By.xpath("//a[contains(text(),'1970')]");
     public static final By PHONE_TEXT_FIELD = By.xpath("//input[@name='data[phone]']");
+    public static final By AUTOFILLING_FORM = By.xpath("//input[@name='region_name']");
+    public static final By LIST_VALUE_LOCATION = By.xpath("//div[@class='dropdown dropdown_location']//ul//li");
     public static final By I_CONFIRM_CHECKBOX = By.cssSelector("input#confirmation");
 
 
@@ -36,6 +40,7 @@ public class Locators {
     public static final By HEART_ROMANCE_ABOARD = By.xpath("//a[@href = 'https://romanceabroad.com/']");
     public static final By GIRLS_LIST = By.xpath("//div[@class='pre-main-inner-content']");
     public static final By SELECTED_GIRL = By.xpath("//img[@alt='Marina_mari_']");
+    public static final By LINKS_OF_ARTICLES = By.xpath("//ul[@class='nav nav-pills nav-stacked content-pages-tree']//li");
 
 
     //Pretty women
@@ -64,6 +69,7 @@ public class Locators {
 
     //Blog
     public static final By BLOG_LINK = By.xpath("//a[@href='https://romanceabroad.com/content/view/blog']");
+    public static final By BLOG_MAIN_PAGE = By.xpath("//h1[contains(text(),'Blog')]");
 
 
     //Radio Button

@@ -8,6 +8,6 @@ public class PhotoTest extends BaseUI {
         photoPage.VerifyALLFromUkranianWomensPhoto();
         photoPage.verifySortByDropdownList();
         photoPage.selectViewCountFromSortByDropdownlist();
-        driver.navigate().to(mainUrl);
+        driver.navigate().to(Data.mainUrl);
     }
 }

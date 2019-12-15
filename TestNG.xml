@@ -1,0 +1,36 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name = "Web Test Suite" parallel="none">
+
+    <!--
+       <test name="IE Cases">
+
+            <parameter name="browser" value="ie"/>
+
+            <classes>
+                <class name="LoginPageTest"/>
+            </classes>
+
+        </test>
+
+        <test name="FireFox Cases">
+
+            <parameter name="browser" value="firefox"/>
+
+            <classes>
+                <class name="LoginPageTest"/>
+            </classes>
+
+        </test>-->
+
+    <test name="Chrome test Cases">
+
+        <parameter name="browser" value="chrome"/>
+
+        <classes>
+            <class name="RegistrationPageTest"/>
+        </classes>
+
+    </test>
+
+</suite>
